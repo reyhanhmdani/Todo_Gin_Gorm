@@ -35,7 +35,7 @@ func main() {
 		log.Fatal("error", err1)
 	}
 	// INITAL DATABASE
-	db, err := database.DatabaseInit(ctx, &cfg)
+	db, err := database.Databaseinit(ctx, &cfg)
 	if err != nil {
 		return
 	}

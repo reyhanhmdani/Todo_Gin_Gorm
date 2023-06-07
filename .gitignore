@@ -1,2 +1,6 @@
 *env.sh
 *.idea
+run
+gin-log
+.dockerignore
+go.mod

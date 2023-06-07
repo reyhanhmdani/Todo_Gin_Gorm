@@ -16,7 +16,7 @@ import (
 	"todoGin/config"
 )
 
-func DatabaseInit(ctx context.Context, cfg *config.Config) (*gorm.DB, error) {
+func Databaseinit(ctx context.Context, cfg *config.Config) (*gorm.DB, error) {
 
 	fmt.Printf("%+v\n", cfg)
 	//
@@ -39,6 +39,7 @@ func DatabaseInit(ctx context.Context, cfg *config.Config) (*gorm.DB, error) {
 		),
 	})
 	if err != nil {
+		fmt.Println(err)
 		panic("Cannot Connect to database")
 		//return nil, err
 	}
@@ -65,7 +66,7 @@ func DatabaseInit(ctx context.Context, cfg *config.Config) (*gorm.DB, error) {
 		return nil, err
 	}
 
-	logrus.Info("Connect to Database")
+	logrus.Info("Connect to Database log")
 	return db, err
 }
 
