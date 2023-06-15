@@ -32,11 +32,5 @@ func (rb *RouteBuilder) RouteInit() *gin.Engine {
 
 	r.POST("/register", rb.todoService.Register)
 	r.POST("/login", rb.todoService.Login)
-	//r.GET("/manage-todos", rb.todoService.TodolistHandlerGetAll)
-	//r.POST("/manage-todo", rb.todoService.TodolistHandlerCreate)
-	//r.GET("/manage-todo/todo/:id", rb.todoService.TodolistHandlerGetByID)
-	//r.PUT("/manage-todo/todo/:id", rb.todoService.TodolistHandlerUpdate)
-	//r.DELETE("/manage-todo/todo/:id", rb.todoService.TodolistHandlerDelete)
-
 	return r
 }

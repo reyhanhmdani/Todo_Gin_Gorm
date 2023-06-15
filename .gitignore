@@ -4,3 +4,4 @@ run
 gin-log
 .dockerignore
 go.mod
+script.sh
