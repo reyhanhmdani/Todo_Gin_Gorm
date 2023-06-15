@@ -6,20 +6,24 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Pastibisa
       - MYSQL_DATABASE=Gin_todo
+#      - MYSQL_INIT_COMMAND=SET GLOBAL host_cache_size=0;
     ports:
-      - 3307:3306
+      - "3307:3306"
     networks:
-      - my-network
+      - network
+#    volumes:
+#    - ./my.cnf:/etc/mysql/my.cnf
 
   my-app-compose:
     container_name: my-app-compose
     restart: always
-    image: todolist
+    image: reeeeey/todolist
     ports:
-      - 8080:8080
+      - "8080:8080"
     networks:
-      - my-network
+      - network
     depends_on:
       - my-sql-compose
+
 networks:
-  my-network:
+  network:

@@ -17,6 +17,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -o binary .
 
 FROM alpine:latest
 
+# Copy MySQL configuration file
+COPY my.cnf /etc/mysql/my.cnf
+
 WORKDIR /app
 
 COPY --from=builder /app/binary .
