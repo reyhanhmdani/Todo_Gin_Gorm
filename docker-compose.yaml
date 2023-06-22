@@ -1,29 +1,35 @@
 version: '3'
 services:
+  my-app-compose:
+    container_name: my-app-compose
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    image: reeeeey/todolist-compose
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+    depends_on:
+      - my-sql-compose
+
   my-sql-compose:
     image: mysql:8.0.33
     container_name: my-sql-compose
     environment:
-      - MYSQL_ROOT_PASSWORD=Pastibisa
-      - MYSQL_DATABASE=Gin_todo
+        - MYSQL_ROOT_PASSWORD=Pastibisa
+        - MYSQL_DATABASE=Gin_todo
 #      - MYSQL_INIT_COMMAND=SET GLOBAL host_cache_size=0;
     ports:
       - "3307:3306"
     networks:
-      - network
+      - my-network
 #    volumes:
 #    - ./my.cnf:/etc/mysql/my.cnf
 
-  my-app-compose:
-    container_name: my-app-compose
-    restart: always
-    image: reeeeey/todolist
-    ports:
-      - "8080:8080"
-    networks:
-      - network
-    depends_on:
-      - my-sql-compose
 
 networks:
-  network:
+  my-network:
+    name: my-network
+    driver: bridge
